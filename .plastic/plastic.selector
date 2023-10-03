@@ -1,0 +1,4 @@
+repository "MyShadow@wechat_os_qy01g0vuz-biruy0lyvm2nkrw@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
