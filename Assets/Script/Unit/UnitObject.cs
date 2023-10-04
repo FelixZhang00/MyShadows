@@ -19,6 +19,9 @@ public class UnitObject : MonoBehaviour
 
     private void Awake()
     {
+        if (gameObject.tag!="UnitObject") {
+            gameObject.tag = "UnitObject";
+        }
         unitInfo = UnitMethod.CreateUnitInfo(unitMovestate, PushEnergyCost, DestoryEnergyCost,ThroughEnergyCost);
         unitInfo.SetActionTypeList(canPush, canDestory, canThrough);
     }
