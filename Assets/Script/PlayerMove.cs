@@ -32,8 +32,14 @@ public class PlayerMove : MonoBehaviour
     [Space]
     public float PlayerMoveSpeed = 1f;
 
+    [Header("玩家移动间隔时间")]
+    public float PlayerMoveInterval = 0.25f;
+
     private bool isPlayerInput;
     private GameObject player = null;
+    private bool isMoveInterval = false;
+    private float currentIntervalTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,10 +60,13 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         isPlayerInput = PlayerAction.MoveInput(ref playerMoveDirect, playerState);
-        if (isPlayerInput)
+        isMoveInterval = PlayerAction.MoveInterval(ref currentIntervalTime, PlayerMoveInterval);
+        if (isPlayerInput && isMoveInterval)
         {
             PlayerAction.PlayerMove(playerMoveDirect,playerState, PlayerMoveSpeed, player);
             isPlayerInput = false;
+            isMoveInterval = false;
+            currentIntervalTime = 0;
         }
     }
 }

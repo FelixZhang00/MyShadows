@@ -73,4 +73,13 @@ public static class PlayerAction
     private static void Move(Transform transform,Vector3 forwardDirection,float speed) {
         transform.Translate(forwardDirection * speed,Space.World);
     }
+
+
+    public static bool MoveInterval(ref float time,float moveIntervalTIme) {
+        time += Time.deltaTime;
+        if (time >= moveIntervalTIme) {
+            return true;
+        }
+        return false;
+    }
 }
